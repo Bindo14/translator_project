@@ -19,20 +19,36 @@ class HomePage extends StatelessWidget {
             title: Text('Choose Your Language'),
             content: Container(
               width: double.maxFinite,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8),
+                color: Colors.blue
+              ),
+
               child: ListView.separated(
                   shrinkWrap: true,
                   itemBuilder: (context,index){
                     return Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: GestureDetector(child: Text(locale[index]['name']),onTap: (){
+                      child: GestureDetector(child: Container(
+                        height: 50,
+                          decoration:  BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+                color: Colors.grey.withAlpha(50),
+                offset: const Offset(1.0, 1.0),
+                blurRadius: 2,
+                spreadRadius: 2)
+          ],
+          color: Colors.indigo,
+          borderRadius: BorderRadius.circular(20.0),
+        ),
+                          child: Center(child: Text(locale[index]['name']))),onTap: (){
                         print(locale[index]['name']);
                         updateLanguage(locale[index]['locale']);
                       },),
                     );
                   }, separatorBuilder: (context,index){
-                return Divider(
-                  color: Colors.blue,
-                );
+                return SizedBox();
               }, itemCount: locale.length
               ),
             ),
@@ -48,25 +64,48 @@ class HomePage extends StatelessWidget {
           height: Get.height,
           width: Get.width,
           decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage("assets/images/img.png"), fit: BoxFit.cover),
+               image: DecorationImage(
+                   image: AssetImage("assets/images/backgroundimage.jpg"), fit: BoxFit.cover),
             borderRadius: BorderRadius.circular(8),
             color: Colors.blue
           ),
 
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(height: 50,),
-              Text('hello'.tr,style: TextStyle(fontSize: 15),),
+              Text('hello'.tr,style: TextStyle(fontSize: 15,color: Colors.white,fontWeight: FontWeight.bold),),
               SizedBox(height: 10,),
-              Text('message'.tr,style: TextStyle(fontSize: 20),),
-              SizedBox(height: 10,),
-              Text('subscribe'.tr,style: TextStyle(fontSize: 20),),
+              Center(child: Text('message'.tr,style: TextStyle(fontSize: 15,color: Colors.white),textAlign: TextAlign.center,)),
+              SizedBox(height: 20,),
 
-              ElevatedButton(onPressed: (){
+
+
+              InkWell(
+                onTap: (){
+                  buildLanguageDialog(context);
+                },
+                child: Container(
+                  height: 40,width: 150,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                    gradient: LinearGradient(
+                      colors: [
+                        Colors.blue,
+                        Colors.white,
+                        Colors.blue
+                      ]
+                    )
+                  ),
+                  child: Center(child: Text('changelang'.tr,style: TextStyle(color: Colors.black),textAlign: TextAlign.center,)),
+                ),
+              )
+             /* ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.white, foregroundColor: Colors.indigo),
+                  onPressed: (){
                 buildLanguageDialog(context);
-              }, child: Text('changelang'.tr)),
+              }, child: Text('changelang'.tr)),*/
             ],
           ),
         )

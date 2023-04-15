@@ -6,7 +6,7 @@ class LocaleString extends Translations{
   //ENGLISH LANGUAGE
   'en_US':{
   'hello':'Hello Transformative Power to Enterprises!',
-  'message':'Myself i m Bindo form Gudalur. And i m completed MCA I have one year experience in flutter development',
+  'message':'Myself Bindo form Gudalur. And i m completed MCA I have one year experience in flutter development',
   'title':"Translator Project",
   'sub':'Subscribe Now',
   'changelang':'Change Language'
